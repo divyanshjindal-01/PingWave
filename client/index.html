@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="nameOfuser">Document</title>
+    <link rel="Stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main">
+    <div class="box1">
+        <ul id="userlist"></ul>
+    </div>
+    
+    <div class="box2">
+        <ul id="AllMessages"></ul>
+        <div class="input">
+            <form>
+                <input type="text"placeholder="Enter Message here" id="message"  > 
+                <input type="submit" id="send-btn">
+            </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="main.js"></script>
+</html>
