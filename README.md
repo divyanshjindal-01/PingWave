@@ -29,6 +29,6 @@ PingWave/
 📌 Notes
 Ensure devices are connected to the same network (for LAN testing).
 
-Default server IP in main.js is hardcoded: http://192.168.1.2:3030.
+Default server IP in main.js is hardcoded: http://[your laptop IP4]:3030.
 🔁 Change it to localhost or your current IP if testing on different setups.
 
