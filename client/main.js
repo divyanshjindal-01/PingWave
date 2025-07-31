@@ -20,6 +20,9 @@ socket.on('newUserArrived', user => {
         member.addEventListener('click', () => {
             receiptant = member.dataset.username;
             console.log("Recipient selected:", receiptant);
+            // After setting the recipient
+            document.getElementById('selected-recipient').innerHTML = `Sending message to: ${receiptant}`;
+
         });
 
         membersList.appendChild(member);
@@ -30,6 +33,11 @@ send.addEventListener('click', (e) => {
     e.preventDefault();
     const newmessage = document.getElementById('message').value.trim();
     document.getElementById('message').value = "";
+    const messageElement = document.createElement('p');
+    messageElement.innerText = newmessage; // Assuming newmessage is a string
+    messageElement.style.color = 'green';
+    AllMessages.appendChild(messageElement);
+
 
     if(!newmessage || !receiptant){
         alert("please select a rec and enter a message"); 
