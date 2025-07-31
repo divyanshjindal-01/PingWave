@@ -1,4 +1,4 @@
-const socket = io('http://192.168.1.2:3030');
+const socket = io('http:{your system IP4}:3030');
 
 const send = document.getElementById('send-btn'); //button to send messages.
 const AllMessages = document.getElementById('AllMessages'); //a div where all message display.
