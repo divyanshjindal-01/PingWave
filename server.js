@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
-
+const http = require("http").createServer(app);
 app.use(express.static('client'));
-const expressserver = app.listen(3030,'0.0.0.0',()=>{
-    console.log('server is running on port 3030');
+
+const io = require('socket.io')(http,{
+    cors:{
+        origin: "*",
+        methods:["  GET","POST"]
+    }
 });
 
-const io = require('socket.io')(expressserver);
-
+const PORT = process.env.PORT || 3000;
 const user = {};
 
 
@@ -18,8 +21,13 @@ io.on('connect',(socket)=>{
     socket.on('register',username=>{
         user[username] = socket.id; //user[key] = value.
         console.log(`${username} has joined with ${socket.id}`);
+
         io.emit('newUserArrived',user);
         console.log(user,"hello world!");
+
+        socket.on("disconnect", () => {
+        console.log("a user disconnected");
+    });
     })
 
     socket.on('messageFromClient',({from,to, message})=>{
@@ -38,4 +46,8 @@ io.on('connect',(socket)=>{
         }}
         
     })
+});
+
+http.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
