@@ -101,3 +101,10 @@ form {
     margin-bottom: 6px;
     font-style: italic;
 }
+#userWhichisRemoved{
+   margin-bottom: 0px;
+   margin-right: 0px;
+   border: 1px solid #ccc;
+   border-radius: 6px;
+   background-color: #f9f9f9;
+}
