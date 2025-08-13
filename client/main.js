@@ -1,4 +1,4 @@
-const socket = io('http://192.100.60.232:3030');
+const socket = io('https://pingwave.onrender.com');
 
 const send = document.getElementById('send-btn'); //button to send messages.
 const AllMessages = document.getElementById('AllMessages'); //a div where all message display.
