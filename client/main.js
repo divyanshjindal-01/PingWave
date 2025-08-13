@@ -1,4 +1,4 @@
-const socket = io('http:{your system IP4}:3030');
+const socket = io('http://192.100.60.232:3030');
 
 const send = document.getElementById('send-btn'); //button to send messages.
 const AllMessages = document.getElementById('AllMessages'); //a div where all message display.
@@ -43,11 +43,16 @@ send.addEventListener('click', (e) => {
         alert("please select a rec and enter a message"); 
         return;
     }
-    socket.emit('messageFromClient', {to:receiptant,message: newmessage});
+    socket.emit('messageFromClient', {from:username,to:receiptant,message: newmessage});
 });
-    socket.on('messageFromServer',message=>{
-        AllMessages.innerHTML += `<li> ${message} </li>`
+    socket.on('messageFromServer',({message, from})=>{
+        
+        AllMessages.innerHTML += `<li style="position: relative;">
+            ${message} 
+            <span style="float: right; font-size: 0.9em; color: gray;">from ${from}</span>
+        </li>`;
     });
-
-
-
+    socket.on('alert',(uff)=>{
+        alert(uff);
+    })
+    

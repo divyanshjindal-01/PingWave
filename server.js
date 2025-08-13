@@ -22,12 +22,16 @@ io.on('connect',(socket)=>{
         console.log(user,"hello world!");
     })
 
-    socket.on('messageFromClient',({to, message})=>{
+    socket.on('messageFromClient',({from,to, message})=>{
        
         if(to){
             const clientid = user[to]; 
             if(clientid){
-            io.to(clientid).emit('messageFromServer',message);
+                if (from == to) {
+                    const uff = "abey yrr khud ko he select kr lia";
+                    io.to(clientid).emit('alert',uff)
+                    
+                }else{io.to(clientid).emit('messageFromServer',{message, from});}
         }else{
             console.log('user not found');
             io.emit('messageFromServer',message);
